@@ -1,6 +1,6 @@
 import React from "react";
 import {BsCheck2Square} from 'react-icons/bs'
-import {BsPinAngle} from 'react-icons/bs'
+import {GiSwordAltar} from 'react-icons/gi'
 
 //Creates the short term goal component
 function ShortTerm(props) {
@@ -15,7 +15,7 @@ function ShortTerm(props) {
     //Only returns the goals that have the short term goal id
     return(
         props.goals.goal_type_id === 1 ?
-        <li > <BsPinAngle className="icon" onClick={currentGoal}/> {props.goals.goal} <BsCheck2Square className="icon" onClick={deleteId}/> </li> : null
+        <li > <GiSwordAltar className="icon" onClick={currentGoal}/> {props.goals.goal} <BsCheck2Square className="icon" onClick={deleteId}/> </li> : null
     )
 }
 

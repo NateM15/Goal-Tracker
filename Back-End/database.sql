@@ -13,7 +13,7 @@ CREATE TABLE goal_type (
 
 CREATE TABLE goals (
     goal_id int GENERATED ALWAYS AS IDENTITY,
-    goal VARCHAR(1000),
+    goal VARCHAR(10000),
     goal_type_id int,
     PRIMARY KEY(goal_id),
     CONSTRAINT fk_goal_type
@@ -24,7 +24,7 @@ CREATE TABLE goals (
 
 CREATE TABLE current_goal (
     id int GENERATED ALWAYS AS IDENTITY,
-    goal VARCHAR(1000),
+    goal VARCHAR(10000),
     goal_id int,
     PRIMARY KEY(id)
 );

@@ -1,8 +1,14 @@
 import {useState} from 'react';
 import React from 'react';
 import Modal from "react-bootstrap/Modal";
+import sword from './sword-sound.mp3'
+import sunrise from './sunrise.mp3'
+import useSound from 'use-sound';
 
-const AddButton = () => {
+
+const AddButton = (props) => {
+
+    const [play] = useSound(sunrise, {volume: .10})
   // 7-10 Handles the state for the Modal box, allows user to open it and then hide it when closed
     const [show, setShow] = useState(false);
 
@@ -27,23 +33,26 @@ const AddButton = () => {
     return (
       <>
       {/* Adds a popup that allows user to create a new goal */}
-        <button id="addGoal" onClick={() => setShow(!show)}>
-          Add Goal
+        <button id="addGoal" onClick={() => {
+          play()
+          setShow(!show)
+        }}>
+          New Quest
         </button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Create a new goal</Modal.Title>
+            <Modal.Title>New Quest</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
               <div>
-                <textarea id="goalAdd" type="text" placeholder='You can do it!' onKeyUp={addGoal}></textarea>
+                <textarea id="goalText" type="text" placeholder='Time to explore!' onKeyUp={addGoal}></textarea>
               </div>
-              <div>
+              <div className="inputs">
               <select className='dropDown' name="goals" id="goals" onChange={handleChange}>
-                    <option value="1">Short-Term</option>
-                    <option value="2">Long-Term</option>
+                    <option value="1">Side Quest</option>
+                    <option value="2">Main Quest</option>
                 </select> 
                 <button className='addGoal' onClick={() => {
                   //Creates the goal using the information put into the input bar and the dropdown
@@ -58,8 +67,10 @@ const AddButton = () => {
                       })
                    })
                    .then(response => response)
-                   .then(alert('Added goal, you got this!'))
-                }}>Add Goal</button> 
+                   .then(
+                    alert('Created Quest, good luck Adventurer!')
+                  )
+                }}>Add Quest</button> 
               </div>
             </form>
           </Modal.Body>

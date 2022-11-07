@@ -5,10 +5,10 @@
 import { useEffect, useState } from "react";
 
 function CurrentGoal(props) {
-    const noGoal = 'No active goal'
+    const noGoal = 'No current quest, click sword to track new quest.'
     return (
         <div className="currentGoal" >
-            <p>Current Goal:</p>
+            <h3>Active Quest:</h3>
             {console.log(props.activeGoal)}
             <p >{props.activeGoal ? props.trackGoal.goal : noGoal}</p>
         </div>

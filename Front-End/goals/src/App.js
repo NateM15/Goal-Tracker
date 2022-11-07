@@ -21,9 +21,10 @@ function App() {
   },[])
 
   //Play sound
-  //Creates a function that plays the mp3 sound when called, currently it is used when a goal is completed
-  const [play] = useSound(victory)
-  
+  //Creates a function that plays the mp3 sound when called, used when goal is created and completed
+  const [play] = useSound(victory, {volume: .05})
+
+
   //Delete the goal on completion
   //Creates a function that deletes the goal where the check mark is clicked
   const deleteGoal = (idInput) => {
@@ -33,7 +34,7 @@ function App() {
         method: 'DELETE'})
         .then(() => {
           play()
-          alert('Great job on completing your goal!')
+          alert('Quest completed, great job Adventurer!')
         })
         .then( setData(data.filter(data => data.goal_id !== id)))
         .then(setActiveGoal(false))
@@ -41,9 +42,12 @@ function App() {
         .catch(error => console.log(error))
   }
 
+  //Tracks active goal state to update and show the current goal or display no goal message
   const [activeGoal, setActiveGoal] = useState()
+
   //Sets a state that allows the current goal to be tracked
   const [trackGoal, setTrackGoal] = useState([])
+
   //Get current goal
   //Fetches the data from current goal to be passed down to the current goal component to be used
     useEffect(() => {
@@ -51,6 +55,7 @@ function App() {
       .then(result => result.json())
       .then(result => setTrackGoal(result))
   }, [])
+
   //Update current goal
   //Handles the update on the current goal, used to set which one it is by updating the current goal database
   const updateCurrentGoal = (goalInfo) => {
@@ -73,19 +78,19 @@ function App() {
   //Sets up the app/components to be rendered and passes down props to the other components
   return(
     <div id="page">
-      <h1>TRACK YOUR GOALS!</h1>
+      <h1>Quest Log</h1>
       <AddButton />
       {trackGoal.map(info => <CurrentGoal key={info.id} trackGoal={info} activeGoal={activeGoal}/>)}
       <div id="container">
         <div id="shortTerm">
           <ul> 
-            <h2>Short-Term</h2>
+            <h2>Side Quest</h2>
             {data.map(data => <ShortTerm key={data.goal_id} goals={data} updateCurrentGoal={updateCurrentGoal} deleteGoal={deleteGoal}/>)} 
           </ul>
         </div>
         <div id="longTerm">
           <ul> 
-            <h2>Long-Term</h2>
+            <h2>Main Quest</h2>
             {data.map(data => <LongTerm key={data.goal_id} goals={data} updateCurrentGoal={updateCurrentGoal} deleteGoal={deleteGoal}/>)}
           </ul>
         </div>

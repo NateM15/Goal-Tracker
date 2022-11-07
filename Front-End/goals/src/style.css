@@ -5,51 +5,107 @@
 #root {
     height: 100vh;
     width: 100vw;
-    background-image: url('https://img.freepik.com/premium-photo/old-paper-texture-background_118047-1365.jpg?w=2000');
+    background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
+    /* background-image: url('https://img.freepik.com/premium-photo/old-paper-texture-background_118047-1365.jpg?w=2000'); */
     background-size: cover;
     background-position: center center;
+    display: table-cell;
+    vertical-align: middle;
 
 }
 #page {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:Apple Chancery, cursive;
+    font-size: larger;
     display: grid;
     align-items: center;
     justify-content:center;
     justify-self: center;
     position: relative;
+    padding-bottom: 5%;
 }
 h1 {
-    padding-top: 15%;
     justify-self: center;
 }
 #container {
-    padding-top: 10%;
+    padding-top: 3%;
     column-count: 2;
 }
 #shortTerm {
-    height: auto;
-    width: 250px;
-    break-inside: avoid;
-    text-align: center;
-    overflow-wrap: normal;  
-}
-#longTerm {
-    height: auto;
-    width: 250px;
+    height: 35vh;
+    width: 30vw;
     break-inside: avoid;
     text-align: center;
     overflow-wrap: normal;
+    overflow-y: scroll;
 }
+#shortTerm::-webkit-scrollbar {
+    padding-top: 5%;
+    width: 0.1em;
+  }
+  #shortTerm::-webkit-scrollbar-corner{
+    opacity: 0%;
+    background: rgba(77, 73, 64, 0.5);
+  }
+  #shortTerm::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+  
+  #shortTerm::-webkit-scrollbar-thumb {
+    background-color: rgba(183, 164, 120, 0.5);
+    outline: rgba(77, 73, 64, 0.5);
+  }
+#longTerm {
+    height: 35vh;
+    width: 30vw;
+    break-inside: avoid;
+    text-align: center;
+    overflow-wrap: normal;
+    overflow-y: scroll;
+}
+#longTerm::-webkit-scrollbar {
+    padding-top: 5%;
+    width: 0.1em;
+  }
+  #longTerm::-webkit-scrollbar-corner{
+    opacity: 0%;
+    background: rgba(77, 73, 64, 0.5);
+  }
+  #longTerm::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+  
+  #longTerm::-webkit-scrollbar-thumb {
+    background-color: rgba(183, 164, 120, 0.5);
+    outline: rgba(77, 73, 64, 0.5);
+  }
 .currentGoal {
-    padding-top: 10%;
+    padding-top: 5%;
+    justify-self: center;
 }
 #addGoal {
     justify-self: center;
     width: 50%;
-    background-color: beige;
+    background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
+    background-position: center;
+    border-radius: 10px;
+}
+#addGoal:hover {
+    color: whitesmoke;
+    background-image: url('https://media.tenor.com/YlsiZ6Rbf8gAAAAC/adventure-thehobbit.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 15vh;
 }
 li {
     column-span: 1;
+    padding-bottom: 3%;
+}
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding-top: 1%;
+    margin: 0;
 }
 .icon:hover {
     cursor: pointer;
@@ -65,10 +121,15 @@ li {
     background-image: url('https://cdn.dribbble.com/users/441326/screenshots/2044427/ship.gif');
     background-repeat: no-repeat;
     background-size: cover;
+    font-family:Apple Chancery, cursive;
     height: 35vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .modal-header {
+    font-family:Apple Chancery, cursive;
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy-FEXVS0DttRd77R0AK_wYmr_sQxX23U0ag&usqp=CAU');
     background-repeat: no-repeat;
     background-size: cover; }
@@ -77,9 +138,34 @@ li {
     background-repeat: no-repeat;
     background-size: cover;
 }
- #goalAdd {
-    opacity: 50%;
+ #goalText {
+    opacity: 70%;
     height: 20vh;
-    width: 20vw;
+    width: 25vw;
     text-align: left;
+    color: black;
+ }
+ .dropDown {
+    background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
+    background-position: center;
+    height: 3vh;
+    justify-self: center;
+ }
+ .dropDown:hover {
+    cursor: pointer;
+ }
+ .addGoal {
+    background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
+    background-position: center;
+    height: 3vh;
+    justify-self: center;
+    border-radius: 0px, 10px, 0px, 10px;
+ }
+ .addGoal:hover {
+    background-color: azure;
+ }
+ .inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
