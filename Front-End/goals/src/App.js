@@ -5,7 +5,8 @@ import LongTerm from './Long-term';
 import AddButton from './AddButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useSound from 'use-sound';
-import victory from './victory.mp3'
+import victory from './victory.mp3';
+import swal from 'sweetalert';
 
 
 
@@ -22,23 +23,23 @@ function App() {
 
   //Play sound
   //Creates a function that plays the mp3 sound when called, used when goal is created and completed
-  const [play] = useSound(victory, {volume: .05})
+  const [play] = useSound(victory, {volume: .05, interrupt: true})
 
 
   //Delete the goal on completion
   //Creates a function that deletes the goal where the check mark is clicked
   const deleteGoal = (idInput) => {
-    console.log(data)
-    let id = idInput
+    let id = idInput.goal_id
     fetch(`http://localhost:8001/api/delete/${id}`, {
         method: 'DELETE'})
         .then(() => {
           play()
-          alert('Quest completed, great job Adventurer!')
+          swal('Quest completed, great job Adventurer!')
         })
         .then( setData(data.filter(data => data.goal_id !== id)))
-        .then(setActiveGoal(false))
-        .then(console.log('Delete active goal:', activeGoal))
+        //Checks to see if the tracked goal is the same as the deleted goal, if it is then it displays the no current goal 
+        .then( trackGoal[0].goal === idInput.goal ? 
+            setActiveGoal(false) : null)
         .catch(error => console.log(error))
   }
 
@@ -79,18 +80,20 @@ function App() {
   return(
     <div id="page">
       <h1>Quest Log</h1>
-      <AddButton />
-      {trackGoal.map(info => <CurrentGoal key={info.id} trackGoal={info} activeGoal={activeGoal}/>)}
+      {/* Accesses the add button component */}
+      <AddButton goals={data} setData={setData} activeGoal={activeGoal} setActiveGoal={setActiveGoal}/>
+      {/* Maps the track goal info and passes it to Current Goal component */}
+      {trackGoal.map(info => <CurrentGoal key={info.id} trackGoal={info} data={data} setActiveGoal={setActiveGoal} activeGoal={activeGoal}/>)}
       <div id="container">
         <div id="shortTerm">
           <ul> 
-            <h2>Side Quest</h2>
+            <h2>Side Quests</h2>
             {data.map(data => <ShortTerm key={data.goal_id} goals={data} updateCurrentGoal={updateCurrentGoal} deleteGoal={deleteGoal}/>)} 
           </ul>
         </div>
         <div id="longTerm">
           <ul> 
-            <h2>Main Quest</h2>
+            <h2>Main Quests</h2>
             {data.map(data => <LongTerm key={data.goal_id} goals={data} updateCurrentGoal={updateCurrentGoal} deleteGoal={deleteGoal}/>)}
           </ul>
         </div>

@@ -7,7 +7,7 @@ import {GiSwordAltar} from 'react-icons/gi'
 function LongTerm(props) {
     //Allows the page to repopulate on delete
     const deleteId = () => {
-        props.deleteGoal(props.goals.goal_id)
+        props.deleteGoal(props.goals)
     }
     //Sends back information so current goal can be updated on icon click
     const currentGoal = () => {

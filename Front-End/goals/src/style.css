@@ -6,16 +6,14 @@
     height: 100vh;
     width: 100vw;
     background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
-    /* background-image: url('https://img.freepik.com/premium-photo/old-paper-texture-background_118047-1365.jpg?w=2000'); */
     background-size: cover;
     background-position: center center;
     display: table-cell;
     vertical-align: middle;
-
 }
 #page {
     font-family:Apple Chancery, cursive;
-    font-size: larger;
+    font-size:x-large;
     display: grid;
     align-items: center;
     justify-content:center;
@@ -40,7 +38,7 @@ h1 {
 }
 #shortTerm::-webkit-scrollbar {
     padding-top: 5%;
-    width: 0.1em;
+    width: 0em;
   }
   #shortTerm::-webkit-scrollbar-corner{
     opacity: 0%;
@@ -64,7 +62,7 @@ h1 {
 }
 #longTerm::-webkit-scrollbar {
     padding-top: 5%;
-    width: 0.1em;
+    width: 0em;
   }
   #longTerm::-webkit-scrollbar-corner{
     opacity: 0%;
@@ -91,7 +89,7 @@ h1 {
 }
 #addGoal:hover {
     color: whitesmoke;
-    background-image: url('https://media.tenor.com/YlsiZ6Rbf8gAAAAC/adventure-thehobbit.gif');
+    background-image: url('https://thumbs.gfycat.com/AnotherSecretDeer-size_restricted.gif');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -111,6 +109,22 @@ ul {
     cursor: pointer;
     color: green;
     transform: scale3d(2, 2, 2);
+}
+.swal-text {
+    font-size: xx-large;
+}
+.swal-modal {
+    background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family:Apple Chancery, cursive;
+    border-radius: 30px;
+    height: 30vh;
+    width: 30vw;
+}
+.swal-button {
+    background-color: black;
+    font-family:Apple Chancery, cursive;
 }
 .modal-backdrop {
     background-image: url('https://thumbs.gfycat.com/FamiliarHairyHamster-max-1mb.gif');
@@ -139,6 +153,7 @@ ul {
     background-size: cover;
 }
  #goalText {
+    font-size: x-large;
     opacity: 70%;
     height: 20vh;
     width: 25vw;
@@ -148,8 +163,9 @@ ul {
  .dropDown {
     background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
     background-position: center;
-    height: 3vh;
+    height: 5vh;
     justify-self: center;
+    font-size: larger;
  }
  .dropDown:hover {
     cursor: pointer;
@@ -157,9 +173,9 @@ ul {
  .addGoal {
     background-image: url('https://i.pinimg.com/originals/9f/88/6c/9f886cb723314a922c7920b24c9070df.jpg');
     background-position: center;
-    height: 3vh;
+    height: 5vh;
     justify-self: center;
-    border-radius: 0px, 10px, 0px, 10px;
+    font-size: larger;
  }
  .addGoal:hover {
     background-color: azure;

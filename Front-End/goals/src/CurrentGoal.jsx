@@ -4,13 +4,17 @@
 // - Add an icon to all tasks that lets you set the current task when clicked
 import { useEffect, useState } from "react";
 
+//Creates CurrentGoal component, if active goal state is true it shows the goal, if false it shows the message
 function CurrentGoal(props) {
-    const noGoal = 'No current quest, click sword to track new quest.'
+
+    const noGoal = 'No current quest, click sword to track new quest.';
+
     return (
         <div className="currentGoal" >
             <h3>Active Quest:</h3>
-            {console.log(props.activeGoal)}
+
             <p >{props.activeGoal ? props.trackGoal.goal : noGoal}</p>
+
         </div>
     )
 }

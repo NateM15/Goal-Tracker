@@ -25,7 +25,6 @@ CREATE TABLE goals (
 CREATE TABLE current_goal (
     id int GENERATED ALWAYS AS IDENTITY,
     goal VARCHAR(10000),
-    goal_id int,
     PRIMARY KEY(id)
 );
 

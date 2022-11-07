@@ -32,8 +32,8 @@ app.get('/api/current-goal', (req, res) => {
 app.post('/api/create/:id', (req, res) => {
     let goal = req.body;
     let id = req.params.id
-    pool.query(`INSERT INTO goals (goal, goal_type_id) VALUES ($1, $2)`, [goal.goal, id])
-    .then(result => res.status(201).send('Added goal'))
+    pool.query(`INSERT INTO goals (goal, goal_type_id) VALUES ($1, $2) RETURNING *`, [goal.goal, id])
+    .then(result => res.status(201).send(result.rows))
     .catch(res.status(400))
 })
 

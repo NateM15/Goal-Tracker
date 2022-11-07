@@ -1,13 +1,14 @@
 import {useState} from 'react';
 import React from 'react';
 import Modal from "react-bootstrap/Modal";
-import sword from './sword-sound.mp3'
-import sunrise from './sunrise.mp3'
+import sunrise from './sunrise.mp3';
 import useSound from 'use-sound';
+import swal from 'sweetalert'
 
 
 const AddButton = (props) => {
 
+  //Creates a play function that allows the sunrise mp3 to play
     const [play] = useSound(sunrise, {volume: .10})
   // 7-10 Handles the state for the Modal box, allows user to open it and then hide it when closed
     const [show, setShow] = useState(false);
@@ -26,7 +27,11 @@ const AddButton = (props) => {
     const addGoal = (event) => {
       let text = event.target.value
       setGoal(text)
-      console.log(goal)
+    }
+
+    //Makes it so the page doesn't refresh when the form is submitted
+    const onSubmit = (e) => {
+      e.preventDefault()
     }
 
 
@@ -45,7 +50,7 @@ const AddButton = (props) => {
             <Modal.Title>New Quest</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
+            <form onSubmit={onSubmit}>
               <div>
                 <textarea id="goalText" type="text" placeholder='Time to explore!' onKeyUp={addGoal}></textarea>
               </div>
@@ -66,10 +71,13 @@ const AddButton = (props) => {
                         goal_type_id: `${id}`
                       })
                    })
-                   .then(response => response)
+                   .then(response => response.json())
+                   .then(response => props.setData([...props.goals, response[0]]))
+                   .then(setId(1))
                    .then(
-                    alert('Created Quest, good luck Adventurer!')
+                    swal('Created Quest, good luck Adventurer!')
                   )
+                  .then(handleClose)
                 }}>Add Quest</button> 
               </div>
             </form>
